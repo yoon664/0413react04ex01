@@ -1,6 +1,14 @@
-import React from "react";
+import { useTransform } from "framer";
+import React, { useEffect, useState } from "react";
 
 const Section01 = () => {
+  const [currentImag, setCurrentImag] = useState(0);
+  const totalImages = 11;
+  const {scrollYProgress} = useScroll();
+
+  const currentImagIndex = useTransform(scrollYProgress, [0,0.3],[0,totalImages])
+  
+  useEffect
   return (
     <section className="w-full h-[400vh] relative bg-black text-white">
       <div className="sticky top-0 h-screen flex items-center justify-center">
@@ -10,7 +18,7 @@ const Section01 = () => {
         >
           <img
             src={`/001/egg00.png`}
-            alt={`egg 00`}
+            alt={`egg ${currentImag}`}
             className="max-w-full max-h-full"
           />
         </div>
